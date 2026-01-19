@@ -1,46 +1,272 @@
+/* ===========================
+   BASE & RESET
+   =========================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background: #f7f7f8;
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ===========================
+   CONTAINER & LAYOUT
+   =========================== */
 .container {
-  max-width: 560px;
+  max-width: 480px;
   margin: 0 auto;
-  padding: 24px;
+  padding: clamp(24px, 5vw, 48px) 20px;
 }
 
-.subtitle {
-  margin-top: -8px;
-  opacity: 0.8;
-}
-
-button {
-  width: 100%;
-  padding: 14px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 16px 0;
-}
-
-.card {
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 16px;
-  min-height: 90px;
-}
-
-.muted {
-  opacity: 0.7;
-}
+/* ===========================
+   HEADER
+   =========================== */
 .header {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
 .logo {
-  max-width: 240px;
+  max-width: 200px;
   width: 100%;
   height: auto;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 15px;
+  color: #595959;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn-primary {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0 0 24px 0;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.btn-primary:hover {
+  background: #2d2d2d;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 16px 0 0 0;
+  background: transparent;
+  color: #595959;
+  border: 1px solid #d4d4d4;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  letter-spacing: -0.01em;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #ffffff;
+  border-color: #b3b3b3;
+  color: #1a1a1a;
+}
+
+.btn-secondary:active:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-secondary.copied {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-color: #1a1a1a;
+}
+
+/* ===========================
+   CARD / RESULT
+   =========================== */
+.card {
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:has(.session-content) {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Placeholder state */
+.placeholder {
+  margin: 0;
+  color: #999999;
+  font-size: 15px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* ===========================
+   SESSION CONTENT
+   =========================== */
+.session-title {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.session-params {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.param-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0;
+  font-size: 15px;
+}
+
+.param-label {
+  color: #737373;
+  font-weight: 400;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.param-value {
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+/* ===========================
+   INTENTION BLOCK
+   =========================== */
+.intention-block {
+  background: #fafafa;
+  border-left: 3px solid #d4d4d4;
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin: 0;
+}
+
+.intention-label {
+  display: block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #737373;
+  font-weight: 500;
   margin-bottom: 8px;
+}
+
+.intention-text {
+  font-size: 16px;
+  font-style: italic;
+  color: #2d2d2d;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ===========================
+   MOBILE REFINEMENTS
+   =========================== */
+@media (max-width: 400px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .card {
+    padding: 24px 20px;
+  }
+
+  .param-label {
+    min-width: 70px;
+    font-size: 14px;
+  }
+
+  .param-value {
+    font-size: 14px;
+  }
+
+  .session-title {
+    font-size: 17px;
+  }
+
+  .intention-text {
+    font-size: 15px;
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    border: 2px solid #000000;
+  }
+
+  .card {
+    border-width: 2px;
+  }
 }

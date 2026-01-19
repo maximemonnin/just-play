@@ -8,20 +8,22 @@
 </head>
 <body>
   <main class="container">
-<header class="header">
-  <img 
-    src="just-play-logo.png" 
-    alt="Just Play logo" 
-    class="logo"
-  />
-  <p class="subtitle">Generate a simple session and start playing.</p>
-</header>
+    <header class="header">
+      <img
+        src="just-play-logo.png"
+        alt="Just Play logo"
+        class="logo"
+      />
+      <p class="tagline">Generate a simple session and start playing.</p>
+    </header>
 
-    <button id="generateBtn">Generate session</button>
+    <button id="generateBtn" class="btn-primary">Generate session</button>
 
     <section class="card" id="result" aria-live="polite">
-      <p class="muted">Click “Generate session”.</p>
+      <p class="placeholder">Click "Generate session".</p>
     </section>
+
+    <button id="copyBtn" class="btn-secondary" disabled>Copy session</button>
   </main>
 
   <script src="app.js"></script>

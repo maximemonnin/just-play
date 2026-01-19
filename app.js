@@ -1,8 +1,8 @@
 const intentions = [
   "Play slowly, leave space",
   "Repeat one simple idea",
-  "Don’t try to improve anything",
-  "Stay curious, don’t judge",
+  "Don't try to improve anything",
+  "Stay curious, don't judge",
   "Let mistakes happen",
   "Play fewer notes than you want",
   "Stop thinking, just play",
@@ -20,7 +20,7 @@ const intentions = [
   "Focus on rhythm, not notes",
   "Listen more than you play",
   "Make it feel good, not impressive",
-  "Play like you’re telling a story",
+  "Play like you're telling a story",
   "Let silence be part of the music",
   "Use only three notes",
   "Repeat one phrase in different ways",
@@ -50,14 +50,66 @@ function generateSession() {
 
 const btn = document.getElementById("generateBtn");
 const result = document.getElementById("result");
+const copyBtn = document.getElementById("copyBtn");
+
+let currentSession = null;
 
 btn.addEventListener("click", () => {
   const s = generateSession();
+  currentSession = s;
+
   result.innerHTML = `
-    <p><strong>Session</strong></p>
-    <p>⏱ ${s.duration} minutes</p>
-    <p>⏩ ${s.tempo} bpm</p>
-    <p>🎵 Key: ${s.key}</p>
-    <p>🎯 Intention: <em>${s.intention}</em></p>
+    <div class="session-content">
+      <h2 class="session-title">Session</h2>
+
+      <div class="session-params">
+        <p class="param-row">
+          <span class="param-label">Duration</span>
+          <span class="param-value">${s.duration} minutes</span>
+        </p>
+        <p class="param-row">
+          <span class="param-label">Tempo</span>
+          <span class="param-value">${s.tempo} bpm</span>
+        </p>
+        <p class="param-row">
+          <span class="param-label">Key</span>
+          <span class="param-value">${s.key}</span>
+        </p>
+      </div>
+
+      <div class="intention-block">
+        <span class="intention-label">Intention</span>
+        <p class="intention-text">${s.intention}</p>
+      </div>
+    </div>
   `;
+
+  copyBtn.disabled = false;
+  copyBtn.textContent = "Copy session";
+  copyBtn.classList.remove("copied");
+});
+
+copyBtn.addEventListener("click", () => {
+  if (!currentSession) return;
+
+  const text = `Just Play Session
+Duration: ${currentSession.duration} minutes
+Tempo: ${currentSession.tempo} bpm
+Key: ${currentSession.key}
+Intention: ${currentSession.intention}`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtn.textContent = "Copied!";
+    copyBtn.classList.add("copied");
+
+    setTimeout(() => {
+      copyBtn.textContent = "Copy session";
+      copyBtn.classList.remove("copied");
+    }, 2000);
+  }).catch(() => {
+    copyBtn.textContent = "Copy failed";
+    setTimeout(() => {
+      copyBtn.textContent = "Copy session";
+    }, 2000);
+  });
 });
