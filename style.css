@@ -195,28 +195,29 @@ body {
    INTENTION BLOCK
    =========================== */
 .intention-block {
-  background: #fafafa;
-  border-left: 3px solid #d4d4d4;
-  border-radius: 4px;
-  padding: 16px 18px;
+  background: #2d2d2d;
+  border: none;
+  border-radius: 12px;
+  padding: 28px 26px;
   margin: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .intention-label {
   display: block;
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #737373;
-  font-weight: 500;
-  margin-bottom: 8px;
+  letter-spacing: 0.12em;
+  color: #999999;
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .intention-text {
-  font-size: 16px;
+  font-size: 19px;
   font-style: italic;
-  color: #2d2d2d;
-  line-height: 1.5;
+  color: #ffffff;
+  line-height: 1.65;
   margin: 0;
   font-weight: 400;
 }
