@@ -33,3 +33,14 @@ button {
 .muted {
   opacity: 0.7;
 }
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
